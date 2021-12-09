@@ -1,5 +1,5 @@
 import { useState, useEffect }  from 'react';
-import Student from '../components/Student/Student';
+import Student from '../components/Student';
 
 
 const StudentsContainer = () => {

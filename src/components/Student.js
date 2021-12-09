@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import  "./Student.css";
-import TagLine from '../TagLine';
+import  "./student.css";
+
 
 const Student = (props) => {
 
-    const { city, company, email, id, firstName,  lastName, pic, skill, grades} =  props.student;
+   const { city, company, email, id, firstName,  lastName, pic, skill, grades} =  props.student;
 
    const getAverage = () =>  {
+       console.log("Hi")
         return grades.reduce((acc, curr) => {
            return acc + parseInt(curr)
        },0) / grades.length
@@ -23,7 +24,11 @@ const Student = (props) => {
     const displayTags = () => {
         return props.student.tags.map(t => {
             return(
-                <p>{t}</p>
+                <div>
+                     <p className="tags">
+                         {t}
+                     </p>
+                </div>
             )
         })
     }
@@ -38,7 +43,7 @@ const Student = (props) => {
 
 
      return(
-         <div className="student-container">
+         <div className="student-profile">
              <div className="student-image">
                  <img src={pic} alt="Icon for students" />
             </div> 
@@ -51,7 +56,7 @@ const Student = (props) => {
                 <ul>
                 {displayGrades()}
                 </ul>
-                {props.student.tags? displayTags() : null}
+                {props.student.tags? displayTags() : ""}
 
             <input 
                 placeholder="Add a Tag"
