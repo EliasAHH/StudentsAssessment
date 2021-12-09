@@ -1,5 +1,5 @@
 import { useState, useEffect }  from 'react';
-import Student from '../components/Student';
+import Student from '../components/Student/Student';
 
 
 const StudentsContainer = () => {
@@ -14,9 +14,24 @@ const StudentsContainer = () => {
     },[])
 
 
-    const sendStudents = () => {
-        return students.map(s => <Student student={s} />)
+
+    const addTagToStudents = (student, tag) => {
+        let studentsCopy =  students.slice()
+        let index = studentsCopy.indexOf(student)
+        if (student["tags"]) {
+            studentsCopy[index].tags.push(tag)
+        }else {
+            student["tags"] = []
+            studentsCopy[index].tags.push(tag)
+        }
+        setStudents(studentsCopy)
     }
+
+
+    const sendStudents = () => {
+        return students.map(s => <Student student={s} key={s.id} addTagToStudents={addTagToStudents} />)
+    }
+
 
     return(
         <div> {sendStudents()}</div>
