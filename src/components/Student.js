@@ -1,8 +1,11 @@
 import { useState } from 'react'
-import  "./student.css";
+import  "./studentstyle.css";
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 
 const Student = (props) => {
+
+   const [showScores,setShowScores] =  useState("false")
 
    const { city, company, email, id, firstName,  lastName, pic, skill, grades} =  props.student;
 
@@ -41,6 +44,8 @@ const Student = (props) => {
         }
     }
 
+    console.log(showScores)
+
 
      return(
          <div className="student-profile">
@@ -49,14 +54,14 @@ const Student = (props) => {
             </div> 
              <div className="student-info">
                 <h1>{firstName} {lastName}</h1>
-                Email: {email }<br/>
-                Company: {company} <br/>
-                Skill: {skill} <br/>
-                Average: {getAverage()}%<br/>
-                <ul>
-                {displayGrades()}
-                </ul>
-                {props.student.tags? displayTags() : ""}
+                    Email: {email }<br/>
+                    Company: {company} <br/>
+                    Skill: {skill} <br/>
+                    Average: {getAverage()}%<br/>
+                    {props.student.tags? displayTags() : ""}
+                    <ul style={{"display": showScores === true? "block":"none"}}>
+                    {displayGrades()}
+                    </ul>
 
             <input 
                 placeholder="Add a Tag"
@@ -64,6 +69,10 @@ const Student = (props) => {
                 name="tag"
                 onKeyPress={handleEnter}
                 />
+            </div>
+            <div className="plus-minus" onClick={e => setShowScores(!showScores)} >
+                <FaPlus display={showScores === true? "none" : "block"} size={"2em"} color={"#939393"}/> 
+                <FaMinus display={showScores === true? "block" : "none"} size={"2em"} color={"#939393"}/>
             </div>
          </div>
      )
