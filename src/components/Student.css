@@ -1,0 +1,17 @@
+.student-container{
+    display: flex;
+    padding: 0 40px;
+  }
+
+  img{
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 2px solid black;
+    margin-right: 50px;
+    margin-top: 64px;
+}
+
+
+  
