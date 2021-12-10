@@ -10,7 +10,6 @@ const Student = (props) => {
    const { city, company, email, id, firstName,  lastName, pic, skill, grades} =  props.student;
 
    const getAverage = () =>  {
-       console.log("Hi")
         return grades.reduce((acc, curr) => {
            return acc + parseInt(curr)
        },0) / grades.length
@@ -44,7 +43,6 @@ const Student = (props) => {
         }
     }
 
-    console.log(showScores)
 
 
      return(
